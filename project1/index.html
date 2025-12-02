@@ -1,44 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <link rel="stylesheet" href="./main.css">
-    <script src="./main.js" defer></script>
-    <title>Homepage</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <link rel="stylesheet" href="./main.css" />
+  <script src="./main.js" defer></script>
+  <title>Homepage - Pokedex Project Adil & Max</title>
 </head>
-<body>
-    <nav id="nav" class="flex items-baseline justify-between mt-5 bg-[#f1f1f1]">  
-        <h1 class="mb-5 mt-3 text-gray-900 ml-5 font-bold text-2xl h-50px">Homepage</h1> 
-         <a class="mr-10 bg-gray-500 p-3 mt-2 font-bold rounded-md text-white text-xl hover:bg-[#555555] hover:text-gray-200" href="./../project2/pokedex.html">To pokedex</a> 
-    </nav>
+<body class="bg-slate-100 min-h-screen flex flex-col">
+  <!-- Navigation -->
+  <nav id="nav" class="flex items-baseline justify-between mt-5 bg-[#f1f1f1] px-5 py-3">
+    <h1 class="text-gray-900 font-bold text-2xl">Homepage - Pokedex Project Adil & Max</h1>
+    <a
+      class="bg-gray-500 px-4 py-2 font-bold rounded-md text-white text-xl hover:bg-[#555555] hover:text-gray-200"
+      href="./../project2/pokedex.html"
+    >
+      To pokedex
+    </a>
+  </nav>
 
-    <div class="container">
-        <ul id="items-list">
+  <!-- Main content -->
+  <main class="flex-1">
+    <section class="max-w-6xl mx-auto px-4 py-8">
+      <div class="flex items-center justify-between mb-6">
+        <h2 class="text-xl font-semibold text-slate-800">Pokemon</h2>
 
-        </ul>
+        <button
+          id="submit-button"
+          class="bg-gray-500 px-4 py-2 font-bold rounded-md text-white text-lg hover:bg-[#555555] hover:text-gray-200"
+        >
+          Load Pokemon
+        </button>
+      </div>
+
+      <!-- Card grid -->
+      <div
+        id="pokemon-container"
+        class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
+      >
+        <!-- Cards werden per JavaScript eingefügt -->
+      </div>
+    </section>
+  </main>
+
+  <!-- Optional Footer -->
+  <footer class="bg-white border-t">
+    <div class="max-w-6xl mx-auto px-4 py-4 text-center text-xs text-slate-500">
+      Pokemon demo with Fetch API & Tailwind
     </div>
-
-    <h1>Table of Pokemon</h1>
-    <div class="table-container">
-        <table id="table">
-            <thead>
-                <tr id="t-row">
-                    <td id="t-item-title">Id</td>
-                    <td id="t-item-title">Name</td>
-                </tr>
-            </thead>
-            <tbody id="t-body">
-                <tr id="t-bRow">
-                    
-                </tr>
-            </tbody>
-        </table>
-
-    </div>
-
-   <button id="submit-button" class="ml-10 bg-gray-500 p-3 mt-2 font-bold rounded-md text-white text-xl hover:bg-[#555555] hover:text-gray-200">Submit</button> 
-
+  </footer>
 </body>
 </html>
