@@ -1,24 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <script src="./pokedex.js" defer></script>
-    <title>pokedex</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <script src="./pokedex.js" defer></script>
+  <title>Pokédex - Pokedex Project Adil & Max</title>
 </head>
-<body>
-    <nav class="flex items-baseline justify-between mt-5 bg-[#f1f1f1]">
-        <h1 class="mb-5 mt-3 ml-5 text-2xl h-50px">Homepage</h1> 
-         <a class="mr-10 bg-gray-500 p-3 mt-2 font-bold rounded-md text-white text-xl" href="./../project1/index.html">To Homepage</a> 
-    </nav>
+<body class="bg-slate-100 min-h-screen flex flex-col">
+  <!-- Navigation -->
+  <nav class="flex items-baseline justify-between mt-5 bg-[#f1f1f1] px-5 py-3">
+    <h1 class="text-gray-900 font-bold text-2xl">My Pokédex</h1>
+    <a
+      class="bg-gray-500 px-4 py-2 font-bold rounded-md text-white text-xl hover:bg-[#555555] hover:text-gray-200"
+      href="./../project1/index.html"
+    >
+      To Homepage
+    </a>
+  </nav>
 
-    <div class="container">
+  <!-- Main content -->
+  <main class="flex-1">
+    <section class="max-w-6xl mx-auto px-4 py-8">
+      <div class="flex items-center justify-between mb-6">
+        <h2 class="text-xl font-semibold text-slate-800">Caught Pokémon</h2>
+        <p id="pokemon-count" class="text-slate-500"></p>
+      </div>
 
-        <ul id="items-list">
+      <!-- Empty state message -->
+      <div id="empty-state" class="hidden text-center py-12">
+        <p class="text-slate-500 text-lg mb-2">No Pokémon caught yet!</p>
+        <a href="./../project1/index.html" class="text-blue-500 hover:underline">
+          Go catch some Pokémon →
+        </a>
+      </div>
 
-        </ul>
+      <!-- Pokemon grid -->
+      <div
+        id="pokedex-container"
+        class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
+      >
+        <!-- Cards will be inserted here by JavaScript -->
+      </div>
+    </section>
+  </main>
 
+  <!-- Footer -->
+  <footer class="bg-white border-t">
+    <div class="max-w-6xl mx-auto px-4 py-4 text-center text-xs text-slate-500">
+      Pokemon demo with Fetch API & Tailwind
     </div>
+  </footer>
 </body>
 </html>
