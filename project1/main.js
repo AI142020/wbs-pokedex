@@ -1,76 +1,58 @@
-"use strict"
+"use strict";
 
+// DOM elements
+const submitButton = document.getElementById("submit-button");
+const pokemonContainer = document.getElementById("pokemon-container");
 
-const itemsList = document.getElementById("items-list")
-const submitButton = document.getElementById("submit-button")
-
-
-const fetchPokimon = async (url) => {
+// Fetch Pokemon from API
+const fetchPokemon = async (url) => {
   try {
     const response = await fetch(url);
     const data = await response.json();
 
-    for(let [id, item] of Object.entries(data.results)){
-      submitButton.addEventListener("click", (event) => {
-        
-/*          const liElement = document.createElement("li")
-        liElement.innerText = (parseInt(id) + 1 ) + " "+ item.name
-        itemsList.appendChild(liElement) */
-
-        /**
-         * <table>
-            <tr>
-              <th>Company</th>
-              <th>Contact</th>
-              <th>Country</th>
-            </tr>
-            <tr>
-              <td>Alfreds Futterkiste</td>
-              <td>Maria Anders</td>
-              <td>Germany</td>
-            </tr>
-            <tr>
-              <td>Centro comercial Moctezuma</td>
-              <td>Francisco Chang</td>
-              <td>Mexico</td>
-            </tr>
-          </table>
-         */
-
-          const tableElement = document.createElement("table")
-          const trElement = document.createElement("tr")
-          const tdElement = document.createElement("td")
-          
-      })
-
-     
-    }
-
+    // data.results = Array mit 10 Pokémon Objekten (name, url)
+    renderPokemonCards(data.results);
 
   } catch (error) {
-    console.log(error);
+    console.log("Error fetching Pokémon:", error);
   }
 };
 
-fetchPokimon("https://pokeapi.co/api/v2/pokemon?limit=10")
+// Render Cards
+const renderPokemonCards = (pokemonList) => {
+  pokemonContainer.innerHTML = ""; // clear grid
 
+  pokemonList.forEach((pokemon, index) => {
+    const id = index + 1;
 
+    // Official artwork URL basiert auf ID
+    const imageUrl =
+      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/" +
+      id +
+      ".png";
 
+    // Card element
+    const card = document.createElement("article");
+    card.className =
+      "bg-white rounded-xl shadow p-4 flex flex-col items-center hover:shadow-xl hover:-translate-y-1 transition cursor-pointer";
 
+    // Card content
+    card.innerHTML = `
+      <span class="text-xs text-slate-400 mb-1">#${id}</span>
+      <img src="${imageUrl}" alt="${pokemon.name}" class="w-24 h-24 object-contain mb-3" />
+      <h2 class="font-semibold text-slate-800 text-lg capitalize">${pokemon.name}</h2>
+    `;
 
-/* const getFetch = () => fetch("https://pokeapi.co/api/v2/pokemon?limit=10")
-  .then((res) => res.json())
-    .then((data) => {
-     
-      let items = data.results
-      for(let [id, item] of Object.entries(data.results)){
+    // Optionale Detailanzeige bei Klick
+    card.addEventListener("click", () => {
+      alert("You clicked on " + pokemon.name);
+    });
 
-        id = parseInt(id) +1  
-        name = item.name
-          
-      } 
-   
-      return {id, name}
+    pokemonContainer.appendChild(card);
+  });
+};
 
-
- })   */
+// Load Pokémon when button is clicked
+submitButton.addEventListener("click", () => {
+  fetchPokemon("https://pokeapi.co/api/v2/pokemon?limit=10");
+});
