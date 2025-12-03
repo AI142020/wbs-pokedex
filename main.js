@@ -1,6 +1,6 @@
 "use strict";
 
-// DOM elements
+// DOM elements - Desktop
 const submitButton = document.getElementById("submit-button");
 const pokemonContainer = document.getElementById("pokemon-container");
 const searchForm = document.getElementById("search-form");
@@ -8,6 +8,11 @@ const searchInput = document.getElementById("search-input");
 const searchDialog = document.getElementById("search-dialog");
 const closeDialogBtn = document.getElementById("close-dialog");
 const dialogContent = document.getElementById("dialog-content");
+
+// DOM elements - Mobile
+const submitButtonMobile = document.getElementById("submit-button-mobile");
+const searchFormMobile = document.getElementById("search-form-mobile");
+const searchInputMobile = document.getElementById("search-input-mobile");
 
 // Paging variables
 let offset = 0;
@@ -233,3 +238,19 @@ searchDialog.addEventListener("click", (e) => {
     searchDialog.close();
   }
 });
+
+// Mobile event listeners
+if (submitButtonMobile) {
+  submitButtonMobile.addEventListener("click", () => {
+    fetchPokemon();
+  });
+}
+
+if (searchFormMobile) {
+  searchFormMobile.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const query = searchInputMobile.value;
+    searchPokemon(query);
+    searchDialog.showModal();
+  });
+}
